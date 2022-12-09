@@ -1,34 +1,61 @@
 package com.himan.model.user;
 
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
  * 用户对象
  */
+// lombok getter/setter
+@Data
+// jpa entity
+@Entity
+// jpa table
+@Table(name = "hm_user")
 public class User implements Serializable {
     /**
-     * 用户名称
+     * 用户名称 不能重复
      */
+    // jpa column
+    @Id
+    @Column(name = "user_name")
     private String userName;
 
     /**
-     * 用户编号
+     * 用户密码
      */
-    private String userId;
+    @Column(name = "password")
+    private String password;
 
-    public String getUserName() {
-        return userName;
-    }
+    /**
+     * 手机号码
+     */
+    @Column(name = "cell_phone_no")
+    private String cellPhoneNo;
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    /**
+     * 电话号码
+     */
+    @Column(name = "phone_no")
+    private String phoneNo;
 
-    public String getUserId() {
-        return userId;
-    }
+    /**
+     * 邮箱
+     */
+    private String email;
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+    /**
+     * 证件类型
+     */
+    private String identityType;
+
+    /**
+     * 证件号码
+     */
+    private String identityNo;
 }
